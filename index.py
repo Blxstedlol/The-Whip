@@ -1,5 +1,7 @@
 import hashlib
 from colorama import *
+import secrets
+import string
 
 blue = Fore.BLUE
 green = Fore.GREEN
@@ -22,6 +24,7 @@ print(f"""
 {blue} 1: Setup
 {green} 2: Run
 {red} 3: Info  
+{white} 4: Password generator
 {reset}
       made by blxsted
       """)
@@ -50,5 +53,8 @@ if mode == 2:
             sha256_hash(line)
 if mode == 3:
     print('Made by blxsted, use it to hack people idfc, just do not get caught')
-
+if mode == 4:
+    chars = string.ascii_letters + string.digits
+    random_string = ''.join(secrets.choice(chars) for _ in range(15))
+    print(random_string)
 # feel free to fork this just give credit
