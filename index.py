@@ -2,7 +2,7 @@ import hashlib
 from colorama import *
 import secrets
 import string
-
+import os
 blue = Fore.BLUE
 green = Fore.GREEN
 red = Fore.RED
@@ -28,12 +28,13 @@ print(f"""
 {green} 2: Run
 {red} 3: Info  
 {Fore.LIGHTBLACK_EX}            OTHER FEATURES:
-{white} 4: Password generator
+{megenta} 4: Password generator
 {yellow} 5: Salter
-{lightcyan} 6: Hasher
+{lightcyan} 6: Fake Traffic
 {reset}
       made by blxsted
       """)
+
 
 mode = int(input('Enter Mode: '))
 if mode == 1:
@@ -42,10 +43,11 @@ if mode == 1:
         settings.write(file_path)
 
 if mode == 2:
-
+    
+    
     hash_to_crack = input(f'{blue} Hash to crack: ')
     try:
-    
+        
     
         with open('settings.txt', 'r') as settings:
             file_path = settings.read()
@@ -60,6 +62,8 @@ if mode == 2:
                         """)
         
         
+                        
+
         def sha256_hash(line):
             line = line.strip()  
             if line:  
@@ -142,8 +146,27 @@ if mode == 4:
 
 if mode == 5:
     chars = string.ascii_letters + string.digits
-    salts = ''.join(secrets.choice(chars) for _ in range(7))
+    salts = ''.join(secrets.choice(chars) for _ in range(15)); salts_other = ''.join(secrets.choice(chars) for _ in range(15))
     hash_input = input('Hash to salt: ')
-    salted_hash = f'{salts}{hash_input}'
+    salted_hash = f'{salts}{hash_input}{salts_other}'
     print(salted_hash)
+
+
+def send_fake_traffic_to_router(router_ip, num_requests):
+    for _ in range(num_requests):
+        try:
+            response = requests.get(f"http://{router_ip}")
+            print(f"Sent request to {router_ip}, status code: {response.status_code}")
+        except requests.RequestException as e:
+            print(f"Error sending request to {router_ip}: {e}")
+def main():
+        router_ip = input("Enter the target IP address (router): ")
+        num_requests = int(input("Enter the number of fake requests to send: "))
+        send_fake_traffic_to_router(router_ip, num_requests)
+import requests
+if mode == 6:
+    if __name__ == "__main__":
+        main()
+
+
 # feel free to fork this just give credit
