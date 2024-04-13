@@ -3,6 +3,8 @@ from colorama import *
 import secrets
 import string
 import os
+import time
+
 blue = Fore.BLUE
 green = Fore.GREEN
 red = Fore.RED
@@ -30,7 +32,6 @@ print(f"""
 {Fore.LIGHTBLACK_EX}            OTHER FEATURES:
 {megenta} 4: Password generator
 {yellow} 5: Salter
-{lightcyan} 6: Fake Traffic
 {reset}
       made by blxsted
       """)
@@ -151,22 +152,6 @@ if mode == 5:
     salted_hash = f'{salts}{hash_input}{salts_other}'
     print(salted_hash)
 
-
-def send_fake_traffic_to_router(router_ip, num_requests):
-    for _ in range(num_requests):
-        try:
-            response = requests.get(f"http://{router_ip}")
-            print(f"Sent request to {router_ip}, status code: {response.status_code}")
-        except requests.RequestException as e:
-            print(f"Error sending request to {router_ip}: {e}")
-def main():
-        router_ip = input("Enter the target IP address (router): ")
-        num_requests = int(input("Enter the number of fake requests to send: "))
-        send_fake_traffic_to_router(router_ip, num_requests)
-import requests
-if mode == 6:
-    if __name__ == "__main__":
-        main()
 
 
 # feel free to fork this just give credit
