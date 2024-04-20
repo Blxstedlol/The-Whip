@@ -44,7 +44,7 @@ if mode == 1:
         settings.write(file_path)
 
 if mode == 2:
-    
+    setup = True
     
     hash_to_crack = input(f'{blue} Hash to crack: ')
     try:
@@ -153,5 +153,7 @@ if mode == 5:
     print(salted_hash)
 
 
-
+if setup == True:
+    # not sure what to add
+    pass
 # feel free to fork this just give credit
