@@ -153,7 +153,3 @@ if mode == 5:
     print(salted_hash)
 
 
-if setup == True:
-    # not sure what to add
-    pass
-# feel free to fork this just give credit
